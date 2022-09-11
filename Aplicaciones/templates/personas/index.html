@@ -1,0 +1,39 @@
+{% extends "../base.html" %}
+
+{% block title %} Personas {% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid"> 
+        <h1> Listado de Personas </h1>
+        <div class="mb-3 table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Créditos</th>
+                        <th class="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for persona in personas %}
+                        <tr>
+                            <td>{{persona.id}}</td>
+                            <td>{{persona.nombre}}</td>
+                            <td>{{persona.apellido}}</td>
+                            <td>{{persona.correo}}</td>
+                            <td><a href="{% url 'edicion_persona' persona.id %}" class="btn btn-info">Editar</a></td>
+                            <td><a href="{% url 'eliminar_persona' persona.id %}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-3">
+            <a href="{% url 'crear_persona' %}" class="btn btn-success ">Nueva Persona</a>
+        </div>
+    </div>
+    
+{% endblock %}
